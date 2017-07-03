@@ -49,11 +49,6 @@ public class FavoriteActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_favorites);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(v -> finish());
-
         mList = (RecyclerView) findViewById(R.id.favorite_list);
         mEmptyView = findViewById(R.id.favorite_empty_layout);
 
@@ -62,19 +57,6 @@ public class FavoriteActivity extends AppCompatActivity {
         mList.setLayoutManager(new GridLayoutManager(this, 2));
         mList.setItemAnimator(new DefaultItemAnimator());
         mList.setAdapter(mAdapter);
-
-        int listTop = mList.getTop();
-        mList.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                toolbar.setElevation(recyclerView.getChildAt(0).getTop() < listTop ?
-                        UiUtils.dpToPx(getResources(),
-                                getResources().getDimension(R.dimen.toolbar_elevation)) : 0);
-
-            }
-        });
     }
 
     @Override

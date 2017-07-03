@@ -74,17 +74,20 @@
         <activity
             android:name="org.aoscp.bolt.history.HistoryActivity"
             android:label="@string/history_title"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/SettingsTheme"
+            android:parentActivityName="org.aoscp.bolt.MainActivity" />
 
         <activity
             android:name="org.aoscp.bolt.favorite.FavoriteActivity"
             android:label="@string/favorite_title"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/SettingsTheme"
+            android:parentActivityName="org.aoscp.bolt.MainActivity" />
 
         <activity
             android:name="org.aoscp.bolt.SettingsActivity"
             android:label="@string/settings_title"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/SettingsTheme"
+            android:parentActivityName="org.aoscp.bolt.MainActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

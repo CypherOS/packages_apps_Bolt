@@ -60,11 +60,6 @@ public class HistoryActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_history);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(v -> finish());
-
         RecyclerView list = (RecyclerView) findViewById(R.id.history_list);
         mEmptyView = findViewById(R.id.history_empty_layout);
 
@@ -97,19 +92,6 @@ public class HistoryActivity extends AppCompatActivity {
 
         ItemTouchHelper helper = new ItemTouchHelper(new HistoryCallBack(this));
         helper.attachToRecyclerView(list);
-
-        int listTop = list.getTop();
-        list.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                boolean elevate = recyclerView.getChildAt(0) != null &&
-                        recyclerView.getChildAt(0).getTop() < listTop;
-                toolbar.setElevation(elevate ? UiUtils.dpToPx(getResources(),
-                        getResources().getDimension(R.dimen.toolbar_elevation)) : 0);
-            }
-        });
     }
 
     @Override
