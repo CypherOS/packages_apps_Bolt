@@ -80,6 +80,7 @@ import org.aoscp.bolt.favorite.FavoriteDatabaseHandler;
 import org.aoscp.bolt.history.HistoryActivity;
 import org.aoscp.bolt.suggestions.SuggestionsAdapter;
 import org.aoscp.bolt.ui.SearchBarController;
+import org.aoscp.bolt.ui.UrlBarController;
 import org.aoscp.bolt.utils.PrefsUtils;
 import org.aoscp.bolt.utils.UiUtils;
 import org.aoscp.bolt.webview.WebViewCompat;
@@ -213,8 +214,11 @@ public class MainActivity extends WebViewExtActivity implements View.OnTouchList
 
         setupMenu();
 
+        UrlBarController urlBarController = new UrlBarController(autoCompleteTextView,
+                (ImageView) findViewById(R.id.secure));
+
         mWebView = (WebViewExt) findViewById(R.id.web_view);
-        mWebView.init(this, autoCompleteTextView, mLoadingProgress, mIncognito);
+        mWebView.init(this, urlBarController, mLoadingProgress, mIncognito);
         mWebView.setDesktopMode(desktopMode);
         mWebView.loadUrl(url == null ? PrefsUtils.getHomePage(this) : url);
 

@@ -23,6 +23,7 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -40,6 +41,7 @@ import android.widget.TextView;
 import org.aoscp.bolt.IntentFilterCompat;
 import org.aoscp.bolt.MainActivity;
 import org.aoscp.bolt.R;
+import org.aoscp.bolt.ui.UrlBarController;
 import org.aoscp.bolt.utils.UrlUtils;
 
 import java.net.URISyntaxException;
@@ -49,9 +51,23 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 class WebClient extends WebViewClient {
+    private UrlBarController mUrlBarController;
 
-    WebClient() {
+    WebClient(UrlBarController urlBarController) {
         super();
+        mUrlBarController = urlBarController;
+    }
+
+    @Override
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        super.onPageStarted(view, url, favicon);
+        mUrlBarController.onPageLoadStarted(url);
+    }
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+        mUrlBarController.onPageLoadFinished();
     }
 
     @Override
