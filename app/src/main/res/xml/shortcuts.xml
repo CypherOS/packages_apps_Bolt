@@ -22,8 +22,8 @@
         android:shortcutShortLabel="@string/shortcut_new_incognito_tab">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="org.lineageos.jelly.MainActivity"
-            android:targetPackage="org.lineageos.jelly">
+            android:targetClass="co.aoscp.bolt.MainActivity"
+            android:targetPackage="co.aoscp.bolt">
             <extra
                 android:name="extra_incognito"
                 android:value="true" />
